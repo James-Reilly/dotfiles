@@ -67,8 +67,6 @@ end
 alias cdy "pwd | xclip -i"
 alias cdp "cd (xclip -o)"
 
-alias vim "nvim"
-alias vi "nvim"
 alias rrr "ranger"
 alias nnn "nnn -e"
 alias open "xdg-open"
@@ -77,9 +75,6 @@ alias rust "evcxr"
 
 # Snaps ugh :(
 export PATH="/snap/bin:$PATH"
-
-# Make nvim default
-export EDITOR=/snap/bin/nvim
 
 # Pyright, bat
 export PATH="$HOME/.local/bin:$PATH"

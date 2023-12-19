@@ -50,14 +50,12 @@ sudo update-alternatives --config vim
 sudo update-alternatives --install /usr/bin/editor editor /snap/bin/nvim 60
 sudo update-alternatives --config editor
 
-
 # Install dotfiles
 echo "Installing dotfiles..."
 mkdir -p ~/.config/fish
 mkdir -p ~/.config/nvim
-cp -rv ../../config/fish/config.fish ~/.config/fish/config.fish
-cp -rv ../../config/nvim/init.vim  ~/.config/nvim/init.vim
-cp -rv ../../config/tmux/tmux.conf ~/.tmux.conf
+cp -rv ./config/fish/config.fish ~/.config/fish/config.fish
+cp -rv ./config/nvim/init.vim  ~/.config/nvim/init.vim
 
 
 ## Install Tmux Plugin Manager
@@ -76,17 +74,9 @@ mkdir -p backup
 cd
 
 
-# install vim-plug
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-vim +PlugInstall
 
-# install YCM
-cd ~/.vim/plugged/YouCompleteMe && python3 install.py -clang-completer --rust-completer  && cd
-#python3 install.py --clang-completer
-
-# # Install Fish package manager
-# curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
+## Install Fish package manager
+curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
 
 # # Install fzf fish support
 # exec fish
@@ -95,13 +85,12 @@ cd ~/.vim/plugged/YouCompleteMe && python3 install.py -clang-completer --rust-co
 ## newer one, not working
 # sudo apt install -y bat fd-find fzf
 # fisher add patrickf3139/fzf.fish
+fisher install ilancosman/tide@v4.1.1
 
 # Another option is to use fzf extension
 sudo apt remove -y fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
-# configure NNN plugins
-curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs | sh
 
 echo "All Done."
